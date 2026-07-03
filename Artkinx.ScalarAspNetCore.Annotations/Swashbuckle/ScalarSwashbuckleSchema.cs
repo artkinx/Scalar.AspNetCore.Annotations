@@ -1,5 +1,5 @@
 ﻿
-#if NET9_0
+#if NET9_0 || NET8_0
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 #elif NET10_0_OR_GREATER
@@ -16,7 +16,7 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Swashbuckle;
 /// <summary>
 /// Implements a Swashbuckle schema filter that inspects type metadata for the <see cref="ScalarSchemaAttribute"/> and enriches the OpenAPI schema definitions with corresponding descriptions and mock values. This filter allows developers to easily integrate Scalar-specific metadata into their API documentation by simply adding the <see cref="ScalarSchemaAttribute"/> to their C# classes or properties, enabling enhanced visualization and organization in the Scalar UI. By applying this filter, any schema that has the <see cref="ScalarSchemaAttribute"/> will have its description and example values properly reflected in the generated OpenAPI documentation, improving the overall developer experience when using the Scalar UI to explore API schemas.
 /// </summary>
-#if NET9_0
+#if NET9_0 || NET8_0
 public class ScalarSwashbuckleSchemaFilter : ISchemaFilter
 {
     /// <summary>

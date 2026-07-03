@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v10.0": {
-      "Artkinx.ScalarAspNetCore.Annotations/1.0.0-preview.9": {
+      "Artkinx.ScalarAspNetCore.Annotations/1.0.0-preview.14": {
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": "10.0.9",
           "Microsoft.OpenApi": "2.7.6",
@@ -60,7 +60,7 @@
     }
   },
   "libraries": {
-    "Artkinx.ScalarAspNetCore.Annotations/1.0.0-preview.9": {
+    "Artkinx.ScalarAspNetCore.Annotations/1.0.0-preview.14": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

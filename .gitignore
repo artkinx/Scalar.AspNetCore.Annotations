@@ -1,1 +1,7 @@
 nupkg/*
+**/bin/*
+**/.vs/*
+**/obj/*
+**/TestResults/*
+**/.vscode/*
+**/.idea/*

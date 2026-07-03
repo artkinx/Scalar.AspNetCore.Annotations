@@ -1,30 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\",
+  "WorkspaceRootPath": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{71B4A63B-C4D8-8D1C-C285-16AA13C71C2E}|Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj|c:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\native\\scalaroperationtransformer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{71B4A63B-C4D8-8D1C-C285-16AA13C71C2E}|Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj|solutionrelative:Artkinx.ScalarAspNetCore.Annotations\\native\\scalaroperationtransformer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarOperationTransformer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarOperationTransformer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{71B4A63B-C4D8-8D1C-C285-16AA13C71C2E}|Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj|c:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\swashbuckle\\scalarswashbuckleoperationsfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{71B4A63B-C4D8-8D1C-C285-16AA13C71C2E}|Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj|solutionrelative:Artkinx.ScalarAspNetCore.Annotations\\swashbuckle\\scalarswashbuckleoperationsfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleSchema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleSchema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{71B4A63B-C4D8-8D1C-C285-16AA13C71C2E}|Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj|c:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\swashbuckle\\scalarswashbuckleschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{71B4A63B-C4D8-8D1C-C285-16AA13C71C2E}|Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj|solutionrelative:Artkinx.ScalarAspNetCore.Annotations\\swashbuckle\\scalarswashbuckleschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleOperationsFilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleOperationsFilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{71B4A63B-C4D8-8D1C-C285-16AA13C71C2E}|Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj|c:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\native\\scalarschematransformer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{71B4A63B-C4D8-8D1C-C285-16AA13C71C2E}|Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj|solutionrelative:Artkinx.ScalarAspNetCore.Annotations\\native\\scalarschematransformer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarSchemaTransformer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarSchemaTransformer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{71B4A63B-C4D8-8D1C-C285-16AA13C71C2E}|Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj|c:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\native\\scalarnativeextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{71B4A63B-C4D8-8D1C-C285-16AA13C71C2E}|Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj|solutionrelative:Artkinx.ScalarAspNetCore.Annotations\\native\\scalarnativeextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarNativeExtensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarNativeExtensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{71B4A63B-C4D8-8D1C-C285-16AA13C71C2E}|Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj|c:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{71B4A63B-C4D8-8D1C-C285-16AA13C71C2E}|Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj|solutionrelative:Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,93 +34,88 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ScalarOperationTransformer.cs",
-              "DocumentMoniker": "C:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarOperationTransformer.cs",
-              "RelativeDocumentMoniker": "Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarOperationTransformer.cs",
-              "ToolTip": "C:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarOperationTransformer.cs",
-              "RelativeToolTip": "Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarOperationTransformer.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAgwFQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-26T02:38:09.303Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ScalarSwashbuckleSchema.cs",
-              "DocumentMoniker": "C:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleSchema.cs",
-              "RelativeDocumentMoniker": "Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleSchema.cs",
-              "ToolTip": "C:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleSchema.cs",
-              "RelativeToolTip": "Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleSchema.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAQwEkAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-26T02:34:39.075Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ScalarSwashbuckleOperationsFilter.cs",
-              "DocumentMoniker": "C:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleOperationsFilter.cs",
-              "RelativeDocumentMoniker": "Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleOperationsFilter.cs",
-              "ToolTip": "C:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleOperationsFilter.cs",
-              "RelativeToolTip": "Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleOperationsFilter.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAApwBkAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-25T20:22:29.986Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ScalarSchemaTransformer.cs",
-              "DocumentMoniker": "C:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarSchemaTransformer.cs",
-              "RelativeDocumentMoniker": "Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarSchemaTransformer.cs",
-              "ToolTip": "C:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarSchemaTransformer.cs",
-              "RelativeToolTip": "Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarSchemaTransformer.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-25T20:22:26.904Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ScalarNativeExtensions.cs",
-              "DocumentMoniker": "C:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarNativeExtensions.cs",
-              "RelativeDocumentMoniker": "Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarNativeExtensions.cs",
-              "ToolTip": "C:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarNativeExtensions.cs",
-              "RelativeToolTip": "Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarNativeExtensions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-25T20:22:18.952Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ScalarOperationTransformer.cs",
+              "DocumentMoniker": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarOperationTransformer.cs",
+              "RelativeDocumentMoniker": "Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarOperationTransformer.cs",
+              "ToolTip": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarOperationTransformer.cs",
+              "RelativeToolTip": "Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarOperationTransformer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-26T02:38:09.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ScalarSwashbuckleSchema.cs",
+              "DocumentMoniker": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleSchema.cs",
+              "RelativeDocumentMoniker": "Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleSchema.cs",
+              "ToolTip": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleSchema.cs",
+              "RelativeToolTip": "Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleSchema.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwEkAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-26T02:34:39.075Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ScalarSwashbuckleOperationsFilter.cs",
+              "DocumentMoniker": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleOperationsFilter.cs",
+              "RelativeDocumentMoniker": "Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleOperationsFilter.cs",
+              "ToolTip": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleOperationsFilter.cs",
+              "RelativeToolTip": "Artkinx.ScalarAspNetCore.Annotations\\Swashbuckle\\ScalarSwashbuckleOperationsFilter.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAApwBkAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-25T20:22:29.986Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ScalarSchemaTransformer.cs",
+              "DocumentMoniker": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarSchemaTransformer.cs",
+              "RelativeDocumentMoniker": "Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarSchemaTransformer.cs",
+              "ToolTip": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarSchemaTransformer.cs",
+              "RelativeToolTip": "Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarSchemaTransformer.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-25T20:22:26.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ScalarNativeExtensions.cs",
+              "DocumentMoniker": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarNativeExtensions.cs",
+              "RelativeDocumentMoniker": "Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarNativeExtensions.cs",
+              "ToolTip": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarNativeExtensions.cs",
+              "RelativeToolTip": "Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarNativeExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-25T20:22:18.952Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Artkinx.ScalarAspNetCore.Annotations",
-              "DocumentMoniker": "C:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj",
+              "Title": "Artkinx.ScalarAspNetCore.Annotations.csproj",
+              "DocumentMoniker": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj",
               "RelativeDocumentMoniker": "Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj",
-              "ToolTip": "C:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj",
+              "ToolTip": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj",
               "RelativeToolTip": "Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-06-25T19:49:43.193Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-25T19:49:43.193Z"
             }
           ]
         }

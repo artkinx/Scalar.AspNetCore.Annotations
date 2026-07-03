@@ -44,7 +44,7 @@
               "RelativeDocumentMoniker": "Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarOperationTransformer.cs",
               "ToolTip": "C:\\projects\\priv\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarOperationTransformer.cs",
               "RelativeToolTip": "Artkinx.ScalarAspNetCore.Annotations\\Native\\ScalarOperationTransformer.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAgwFgAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAgwFQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-26T02:38:09.303Z",
               "EditorCaption": ""
@@ -102,6 +102,14 @@
               "EditorCaption": ""
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Artkinx.ScalarAspNetCore.Annotations",
@@ -113,10 +121,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2026-06-25T19:49:43.193Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             }
           ]
         }

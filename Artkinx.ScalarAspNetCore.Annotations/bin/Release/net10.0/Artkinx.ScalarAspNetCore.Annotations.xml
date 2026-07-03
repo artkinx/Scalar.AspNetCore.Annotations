@@ -31,6 +31,26 @@
             <param name="name"></param>
             <param name="color"></param>
         </member>
+        <member name="T:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarEnumAttribute">
+            <summary>
+            Represents
+            </summary>
+        </member>
+        <member name="M:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarEnumAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Represents
+            </summary>
+        </member>
+        <member name="P:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarEnumAttribute.Title">
+            <summary>
+            The title of the enum.
+            </summary>
+        </member>
+        <member name="P:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarEnumAttribute.Description">
+            <summary>
+            The description of the enum.
+            </summary>
+        </member>
         <member name="T:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarExcludeAttribute">
             <summary>
             Represents an attribute that can be applied to API endpoints to indicate that they should be excluded from the Scalar UI. When this attribute is present on a method, it serves as a marker to hide the corresponding endpoint from being displayed in the Scalar UI, while still keeping it accessible in the underlying OpenAPI JSON documentation. This allows developers to control the visibility of specific API endpoints in the Scalar UI without affecting their availability in the API documentation or functionality. By using this attribute, you can effectively manage which endpoints are showcased in the Scalar UI, providing a cleaner and more focused user experience for API consumers.
@@ -136,9 +156,44 @@
             Marks the property as write-only (hidden in responses, e.g., passwords).
             </summary>
         </member>
+        <member name="T:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarStabilityAttribute">
+            <summary>
+            Represents an attribute that can be applied to API endpoints to indicate their stability level. When this attribute is present on a method, it serves as a marker to indicate the stability level of the corresponding endpoint in the Scalar UI. This allows developers to control the visibility of specific API endpoints in the Scalar UI, providing a cleaner and more focused user experience for API consumers.
+            </summary>
+        </member>
+        <member name="M:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarStabilityAttribute.#ctor(Artkinx.ScalarAspNetCore.Annotations.Enums.ScalarStabilityLevel)">
+            <summary>
+            Represents an attribute that can be applied to API endpoints to indicate their stability level. When this attribute is present on a method, it serves as a marker to indicate the stability level of the corresponding endpoint in the Scalar UI. This allows developers to control the visibility of specific API endpoints in the Scalar UI, providing a cleaner and more focused user experience for API consumers.
+            </summary>
+        </member>
+        <member name="P:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarStabilityAttribute.Level">
+            <summary>
+            Gets the stability level of the API operation.
+            </summary>
+        </member>
         <member name="T:Artkinx.ScalarAspNetCore.Annotations.Enums.ScalarContentType">
             <summary>
             Represents standard content types used in HTTP APIs.
+            </summary>
+        </member>
+        <member name="T:Artkinx.ScalarAspNetCore.Annotations.Enums.ScalarStabilityLevel">
+            <summary>
+            The stability level of the API operation.
+            </summary>
+        </member>
+        <member name="F:Artkinx.ScalarAspNetCore.Annotations.Enums.ScalarStabilityLevel.Stable">
+            <summary>
+            The API operation is stable and will not be changed in breaking ways.
+            </summary>
+        </member>
+        <member name="F:Artkinx.ScalarAspNetCore.Annotations.Enums.ScalarStabilityLevel.Deprecated">
+            <summary>
+            The API operation is deprecated and will be removed in a future version.
+            </summary>
+        </member>
+        <member name="F:Artkinx.ScalarAspNetCore.Annotations.Enums.ScalarStabilityLevel.Experimental">
+            <summary>
+            The API operation is experimental and may be changed in breaking ways.
             </summary>
         </member>
         <member name="T:Artkinx.ScalarAspNetCore.Annotations.Native.ScalarNativeExtensions">
@@ -150,8 +205,9 @@
             <summary>
             Adds support for Scalar-specific annotations to the OpenAPI generation process by registering custom operation and schema transformers that recognize and process attributes like <see cref="T:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarOperationAttribute"/>, <see cref="T:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarBadgeAttribute"/>, and <see cref="T:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarResponseAttribute"/>. This extension method should be called during the OpenAPI configuration phase (e.g., in the Startup.cs or Program.cs file) to ensure that the Scalar-specific metadata is properly incorporated into the generated OpenAPI documentation, enabling enhanced visualization and organization in the Scalar UI.
             </summary>
-            <param name="options"></param>
-            <returns></returns>
+            <param name="options">The <see cref="T:Microsoft.AspNetCore.OpenApi.OpenApiOptions"/> instance to modify.</param>
+            <returns>The modified <see cref="T:Microsoft.AspNetCore.OpenApi.OpenApiOptions"/> instance.</returns>
+            
         </member>
         <member name="T:Artkinx.ScalarAspNetCore.Annotations.Native.ScalarOperationTransformer">
             <summary>
@@ -197,6 +253,13 @@
             <summary>
             Implements a Swashbuckle operation filter that inspects API endpoint metadata for Scalar-specific attributes such as <see cref="T:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarOperationAttribute"/>, <see cref="T:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarExcludeAttribute"/>, and <see cref="T:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarCodeSampleAttribute"/>. This filter enriches the OpenAPI operation definitions with corresponding extensions that Swashbuckle can utilize to enhance the generated API documentation with badges, code samples, and exclusion flags, allowing for improved visualization and organization in the Scalar UI. By applying this filter, developers can easily integrate Scalar-specific metadata into their API documentation by simply adding the appropriate attributes to their API endpoints.
             </summary>
+        </member>
+        <member name="M:Artkinx.ScalarAspNetCore.Annotations.Swashbuckle.ScalarSwashbuckleOperationFilter.Apply(Microsoft.OpenApi.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            Applies the filter to enrich the OpenAPI operation based on the presence of Scalar-specific attributes on the API endpoint. The filter checks for <see cref="T:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarOperationAttribute"/>, <see cref="T:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarExcludeAttribute"/>, and <see cref="T:Artkinx.ScalarAspNetCore.Annotations.Attributes.ScalarCodeSampleAttribute"/> on the method metadata, updating the operation's summary, description, operation ID, tags, and extensions accordingly. This allows for seamless integration of Scalar-specific metadata into the API documentation, enhancing the clarity and usability of the generated OpenAPI specifications for clients consuming the API through the Scalar UI.
+            </summary>
+            <param name="operation"></param>
+            <param name="context"></param>
         </member>
         <member name="T:Artkinx.ScalarAspNetCore.Annotations.Swashbuckle.ScalarSwashbuckleSchemaFilter">
             <summary>

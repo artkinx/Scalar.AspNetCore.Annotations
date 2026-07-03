@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj": {
-      "version": "1.0.0-preview.9",
+      "version": "1.0.0-preview.14",
       "restore": {
         "projectUniqueName": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj",
         "projectName": "Artkinx.ScalarAspNetCore.Annotations",
@@ -521,7 +521,11 @@
           "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[8.0.27, )"
+              "version": "[8.0.28, )"
+            },
+            "Microsoft.OpenApi": {
+              "target": "Package",
+              "version": "[1.6.23, )"
             },
             "Swashbuckle.AspNetCore.SwaggerGen": {
               "target": "Package",

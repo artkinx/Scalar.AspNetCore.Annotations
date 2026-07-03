@@ -8,11 +8,11 @@
     <RootNamespace>Artkinx.ScalarAspNetCore.Annotations</RootNamespace>
 
     <PackageId>Artkinx.ScalarAspNetCore.Annotations</PackageId>
-    <Version>1.0.0-preview.9</Version>
+    <Version>1.0.0-preview.14</Version>
     <Authors>Adunbi Moses</Authors>
     <Description>Declarative attributes for configuring Scalar OpenAPI documentation in .NET and Swashbuckle.</Description>
     <PackageTags>scalar;openapi;swagger;swashbuckle;aspnetcore;api</PackageTags>
-    <RepositoryUrl>https://github.com/artkinx/Artkinx.ScalarAspNetCore.Annotations</RepositoryUrl>
+    <RepositoryUrl>https://github.com/artkinx/ScalarAspNetCore.Annotations</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
 
@@ -37,7 +37,10 @@
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
     <PackageReference Include="Microsoft.AspNetCore.OpenApi">
-      <Version>8.0.27</Version>
+      <Version>8.0.28</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.OpenApi">
+      <Version>1.6.23</Version>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="8.1.4" />
 

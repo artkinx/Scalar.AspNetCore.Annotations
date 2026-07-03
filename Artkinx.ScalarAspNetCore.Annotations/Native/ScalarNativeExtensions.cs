@@ -16,8 +16,9 @@ public static class ScalarNativeExtensions
     /// <summary>
     /// Adds support for Scalar-specific annotations to the OpenAPI generation process by registering custom operation and schema transformers that recognize and process attributes like <see cref="Attributes.ScalarOperationAttribute"/>, <see cref="Attributes.ScalarBadgeAttribute"/>, and <see cref="Attributes.ScalarResponseAttribute"/>. This extension method should be called during the OpenAPI configuration phase (e.g., in the Startup.cs or Program.cs file) to ensure that the Scalar-specific metadata is properly incorporated into the generated OpenAPI documentation, enabling enhanced visualization and organization in the Scalar UI.
     /// </summary>
-    /// <param name="options"></param>
-    /// <returns></returns>
+    /// <param name="options">The <see cref="OpenApiOptions"/> instance to modify.</param>
+    /// <returns>The modified <see cref="OpenApiOptions"/> instance.</returns>
+    /// 
     public static OpenApiOptions AddScalarAnnotations(this Microsoft.AspNetCore.OpenApi.OpenApiOptions options)
     {
         options.AddOperationTransformer<ScalarOperationTransformer>();

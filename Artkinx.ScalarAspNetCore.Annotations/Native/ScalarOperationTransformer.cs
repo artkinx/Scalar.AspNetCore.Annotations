@@ -33,6 +33,18 @@ public class ScalarOperationTransformer : IOpenApiOperationTransformer
         // Extract all attributes from the endpoint metadata
         var metadata = context.Description.ActionDescriptor.EndpointMetadata;
 
+#if NET9_0
+        if (operation.Extensions == null)
+        {
+            operation.Extensions = new Dictionary<string, Microsoft.OpenApi.Interfaces.IOpenApiExtension>();
+        }
+#elif NET10_0
+        if (operation.Extensions == null)
+        {
+            operation.Extensions = new Dictionary<string, IOpenApiExtension>();
+        }
+#endif
+
 
         // 1. Handle ScalarOperationAttribute for general operation metadata
         var scalarOp = metadata.OfType<ScalarOperationAttribute>().FirstOrDefault();
@@ -89,7 +101,10 @@ public class ScalarOperationTransformer : IOpenApiOperationTransformer
                         {
                             if (!response.Content.ContainsKey(ct))
                             {
-                                response.Content[ct] = new OpenApiMediaType();
+                                response.Content[ct] = new OpenApiMediaType()
+                                {
+
+                                };
                             }
                         }
                         //response.Content = r.ContentTypes.ToDictionary(ct => ct, ct => new OpenApiMediaType());
@@ -101,7 +116,7 @@ public class ScalarOperationTransformer : IOpenApiOperationTransformer
         var badges = metadata.OfType<ScalarBadgeAttribute>().ToList();
         if (badges.Count > 0)
         {
-#if NET8_0
+#if NET9_0
             var badgeArray = new OpenApiArray();
             foreach (var badge in badges)
             {
@@ -114,6 +129,18 @@ public class ScalarOperationTransformer : IOpenApiOperationTransformer
                 });
             }
             operation.Extensions["x-badges"] = badgeArray;
+#elif NET10_0
+            var badgeArray = new JsonArray();
+            foreach (var badge in badges)
+            {
+                badgeArray.Add(new JsonObject()
+                {
+                    ["name"] = JsonValue.Create(badge.Name),
+                    ["position"] = JsonValue.Create(badge.Position.ToString().ToLowerInvariant()),
+                    ["color"] = JsonValue.Create(badge.Color)
+                });
+            }
+            operation.Extensions?["x-badges"] = new JsonNodeExtension(badgeArray);
 #endif
         }
 
@@ -121,7 +148,7 @@ public class ScalarOperationTransformer : IOpenApiOperationTransformer
         var codeSamples = metadata.OfType<ScalarCodeSampleAttribute>().ToList();
         if (codeSamples.Count > 0)
         {
-#if NET8_0
+#if NET9_0
             var sampleArray = new OpenApiArray();
             foreach (var sample in codeSamples)
             {
@@ -133,21 +160,45 @@ public class ScalarOperationTransformer : IOpenApiOperationTransformer
                 });
             }
             operation.Extensions["x-codeSamples"] = sampleArray;
+#elif NET10_0
+            var sampleArray = new JsonArray();
+            foreach (var sample in codeSamples)
+            {
+                sampleArray.Add(new JsonObject()
+                {
+                    ["lang"] = JsonValue.Create(sample.Language),
+                    ["source"] = JsonValue.Create(sample.Code),
+                    ["label"] = JsonValue.Create(string.IsNullOrEmpty(sample.Title) ? sample.Language : sample.Title)
+                });
+            }
+            operation.Extensions?["x-codeSamples"] = new JsonNodeExtension(sampleArray);
 #endif
         }
 
         // 3. Handle Exclusions
         if (metadata.OfType<ScalarExcludeAttribute>().Any())
         {
-#if NET8_0
+#if  NET9_0
             operation.Extensions["x-scalar-ignore"] = new OpenApiBoolean(true);
+#elif NET10_0
+            operation.Extensions!["x-scalar-ignore"] = new JsonNodeExtension(JsonValue.Create(true));
 #endif
         }
+
+        if (metadata.OfType<ScalarStabilityAttribute>().Any())
+        {
+            var stabilityAttr = metadata.OfType<ScalarStabilityAttribute>().First();
+#if NET9_0
+            operation.Extensions["x-scalar-stability"] = new OpenApiString(stabilityAttr.Level.ToString().ToLowerInvariant());
+#elif  NET10_0
+            operation.Extensions!["x-scalar-stability"] = new JsonNodeExtension(JsonValue.Create(stabilityAttr.Level.ToString().ToLowerInvariant()));
+#endif
+        }
+
+        Console.WriteLine($"Transformed operation {operation.OperationId} with Scalar attributes.");
+        Console.WriteLine($"Extensions are : {string.Join(", ", operation.Extensions!.Keys)}");
 
         return Task.CompletedTask;
     }
 }
 #endif
-
-
-

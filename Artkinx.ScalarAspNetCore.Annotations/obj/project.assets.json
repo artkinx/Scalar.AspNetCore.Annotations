@@ -74,7 +74,7 @@
       }
     },
     "net8.0": {
-      "Microsoft.AspNetCore.OpenApi/8.0.27": {
+      "Microsoft.AspNetCore.OpenApi/8.0.28": {
         "type": "package",
         "dependencies": {
           "Microsoft.OpenApi": "1.4.3"
@@ -213,10 +213,10 @@
     }
   },
   "libraries": {
-    "Microsoft.AspNetCore.OpenApi/8.0.27": {
-      "sha512": "lbjwtlQ1ICGKp3UyhoF9i4APpzX01CqtY8vVba2vL32Nm3v5ir9/FJ0PHXfxgsO5sr1Bb4KkCOH7FSauEHUgRQ==",
+    "Microsoft.AspNetCore.OpenApi/8.0.28": {
+      "sha512": "+cEj0SuUWCJygZa21fNDJOEVu8aOBnxqJkzg0dLJBzWzkT/NA6OEPpzTmok2KfaOwS+ZO3xI2fTftmxCAtlplA==",
       "type": "package",
-      "path": "microsoft.aspnetcore.openapi/8.0.27",
+      "path": "microsoft.aspnetcore.openapi/8.0.28",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -224,7 +224,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net8.0/Microsoft.AspNetCore.OpenApi.dll",
         "lib/net8.0/Microsoft.AspNetCore.OpenApi.xml",
-        "microsoft.aspnetcore.openapi.8.0.27.nupkg.sha512",
+        "microsoft.aspnetcore.openapi.8.0.28.nupkg.sha512",
         "microsoft.aspnetcore.openapi.nuspec"
       ]
     },
@@ -438,7 +438,8 @@
       "Swashbuckle.AspNetCore.SwaggerGen >= 10.2.3"
     ],
     "net8.0": [
-      "Microsoft.AspNetCore.OpenApi >= 8.0.27",
+      "Microsoft.AspNetCore.OpenApi >= 8.0.28",
+      "Microsoft.OpenApi >= 1.6.23",
       "Swashbuckle.AspNetCore.SwaggerGen >= 8.1.4"
     ],
     "net9.0": [
@@ -451,13 +452,13 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.0.0-preview.9",
+    "version": "1.0.0-preview.14",
     "restore": {
-      "projectUniqueName": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj",
+      "projectUniqueName": "c:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj",
       "projectName": "Artkinx.ScalarAspNetCore.Annotations",
-      "projectPath": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj",
+      "projectPath": "c:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations.csproj",
       "packagesPath": "C:\\Users\\artki\\.nuget\\packages\\",
-      "outputPath": "C:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\obj\\",
+      "outputPath": "c:\\projects\\priv\\Scalar.AspNetCore.Annotations\\Artkinx.ScalarAspNetCore.Annotations\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
@@ -967,7 +968,11 @@
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
-            "version": "[8.0.27, )"
+            "version": "[8.0.28, )"
+          },
+          "Microsoft.OpenApi": {
+            "target": "Package",
+            "version": "[1.6.23, )"
           },
           "Swashbuckle.AspNetCore.SwaggerGen": {
             "target": "Package",

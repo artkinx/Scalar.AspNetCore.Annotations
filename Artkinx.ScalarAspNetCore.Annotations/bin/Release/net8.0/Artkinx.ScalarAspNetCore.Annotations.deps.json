@@ -6,23 +6,24 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "Artkinx.ScalarAspNetCore.Annotations/1.0.0-preview.9": {
+      "Artkinx.ScalarAspNetCore.Annotations/1.0.0-preview.14": {
         "dependencies": {
-          "Microsoft.AspNetCore.OpenApi": "8.0.27",
+          "Microsoft.AspNetCore.OpenApi": "8.0.28",
+          "Microsoft.OpenApi": "1.6.23",
           "Swashbuckle.AspNetCore.SwaggerGen": "8.1.4"
         },
         "runtime": {
           "Artkinx.ScalarAspNetCore.Annotations.dll": {}
         }
       },
-      "Microsoft.AspNetCore.OpenApi/8.0.27": {
+      "Microsoft.AspNetCore.OpenApi/8.0.28": {
         "dependencies": {
           "Microsoft.OpenApi": "1.6.23"
         },
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.OpenApi.dll": {
-            "assemblyVersion": "8.0.27.0",
-            "fileVersion": "8.0.2726.23008"
+            "assemblyVersion": "8.0.28.0",
+            "fileVersion": "8.0.2826.26913"
           }
         }
       },
@@ -59,17 +60,17 @@
     }
   },
   "libraries": {
-    "Artkinx.ScalarAspNetCore.Annotations/1.0.0-preview.9": {
+    "Artkinx.ScalarAspNetCore.Annotations/1.0.0-preview.14": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.AspNetCore.OpenApi/8.0.27": {
+    "Microsoft.AspNetCore.OpenApi/8.0.28": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-lbjwtlQ1ICGKp3UyhoF9i4APpzX01CqtY8vVba2vL32Nm3v5ir9/FJ0PHXfxgsO5sr1Bb4KkCOH7FSauEHUgRQ==",
-      "path": "microsoft.aspnetcore.openapi/8.0.27",
-      "hashPath": "microsoft.aspnetcore.openapi.8.0.27.nupkg.sha512"
+      "sha512": "sha512-+cEj0SuUWCJygZa21fNDJOEVu8aOBnxqJkzg0dLJBzWzkT/NA6OEPpzTmok2KfaOwS+ZO3xI2fTftmxCAtlplA==",
+      "path": "microsoft.aspnetcore.openapi/8.0.28",
+      "hashPath": "microsoft.aspnetcore.openapi.8.0.28.nupkg.sha512"
     },
     "Microsoft.OpenApi/1.6.23": {
       "type": "package",

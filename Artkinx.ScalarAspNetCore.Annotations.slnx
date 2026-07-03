@@ -1,3 +1,4 @@
 <Solution>
-  <Project Path="Artkinx.ScalarAspNetCore.Annotations/Artkinx.ScalarAspNetCore.Annotations.csproj" />
+  <Project Path="Artkinx.ScalarAspNetCore.Annotations/Artkinx.ScalarAspNetCore.Annotations.csproj"/>
+  <Project Path="Scalar.AspNetCore.Annotations.UnitTests/Scalar.AspNetCore.Annotations.UnitTests.csproj"/>
 </Solution>

@@ -1,4 +1,4 @@
-﻿#if NET9_0_OR_GREATER
+#if NET9_0_OR_GREATER
 
 
 using Microsoft.AspNetCore.OpenApi;
@@ -33,6 +33,18 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Native
             // context.JsonTypeInfo.Type gives us the underlying C# class/record
             var type = context.JsonTypeInfo.Type;
 
+#if NET9_0
+            if (schema.Extensions == null)
+            {
+                schema.Extensions = new Dictionary<string, Microsoft.OpenApi.Interfaces.IOpenApiExtension>();
+            }
+#elif NET10_0
+            if (schema.Extensions == null)
+            {
+                schema.Extensions = new Dictionary<string, IOpenApiExtension>();
+            }
+#endif
+
             var schemaAttribute = type.GetCustomAttribute<ScalarSchemaAttribute>();
 
             if (schemaAttribute != null)
@@ -51,6 +63,21 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Native
 #elif NET10_0
                     schema.Extensions?["x-scalar-mock"] = new JsonNodeExtension(JsonValue.Create(schemaAttribute.MockValue.ToString() ?? ""));
 #endif
+                }
+
+                // TODO: Complete the refrence to the enum varnames
+                if (type.IsEnum)
+                {
+                    var t = type.GetEnumUnderlyingType();
+                    var enumAttribute = type.GetCustomAttribute<ScalarEnumAttribute>();
+                    if (enumAttribute != null)
+                    {
+                        if (!string.IsNullOrEmpty(enumAttribute.Description))
+                        {
+                            schema.Description = enumAttribute.Description;
+                        }
+                        schema.Title = enumAttribute.Title;
+                    }
                 }
             }
 
