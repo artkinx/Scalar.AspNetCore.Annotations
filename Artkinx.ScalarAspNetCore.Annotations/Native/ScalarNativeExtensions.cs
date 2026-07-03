@@ -18,7 +18,6 @@ public static class ScalarNativeExtensions
     /// </summary>
     /// <param name="options">The <see cref="OpenApiOptions"/> instance to modify.</param>
     /// <returns>The modified <see cref="OpenApiOptions"/> instance.</returns>
-    /// 
     public static OpenApiOptions AddScalarAnnotations(this Microsoft.AspNetCore.OpenApi.OpenApiOptions options)
     {
         options.AddOperationTransformer<ScalarOperationTransformer>();

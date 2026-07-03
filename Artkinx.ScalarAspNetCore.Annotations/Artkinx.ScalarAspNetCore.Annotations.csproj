@@ -15,6 +15,7 @@
     <RepositoryUrl>https://github.com/artkinx/ScalarAspNetCore.Annotations</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <ReleaseNotes>https://github.com/artkinx/ScalarAspNetCore.Annotations/blob/main/CHANGELOG.md</ReleaseNotes>
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
