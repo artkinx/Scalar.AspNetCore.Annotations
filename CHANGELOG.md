@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-preview.15] - 2026-07-08
+- Improved the implementation modularity
+- Improved the Schema generation for the `ScalarResponseAttribute`
+- Made sure to fallback to Swagger for .NET8
+
 ## [1.0.0-preview.14] - 2026-07-03
 
 ### Changed

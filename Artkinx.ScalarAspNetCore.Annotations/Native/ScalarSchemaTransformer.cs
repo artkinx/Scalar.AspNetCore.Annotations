@@ -11,6 +11,7 @@ using Microsoft.OpenApi;
 using System.Reflection;
 using System.Text.Json.Nodes;
 using Artkinx.ScalarAspNetCore.Annotations.Core.Attributes;
+using Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors;
 
 namespace Artkinx.ScalarAspNetCore.Annotations.Native
 {
@@ -31,57 +32,8 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Native
         public Task TransformAsync(OpenApiSchema schema, OpenApiSchemaTransformerContext context, CancellationToken cancellationToken)
         {
             // context.JsonTypeInfo.Type gives us the underlying C# class/record
-            var type = context.JsonTypeInfo.Type;
 
-#if NET9_0
-            if (schema.Extensions == null)
-            {
-                schema.Extensions = new Dictionary<string, Microsoft.OpenApi.Interfaces.IOpenApiExtension>();
-            }
-#elif NET10_0
-            if (schema.Extensions == null)
-            {
-                schema.Extensions = new Dictionary<string, IOpenApiExtension>();
-            }
-#endif
-
-            var schemaAttribute = type.GetCustomAttribute<ScalarSchemaAttribute>();
-
-            if (schemaAttribute != null)
-            {
-                if (!string.IsNullOrEmpty(schemaAttribute.Description))
-                {
-                    schema.Description = schemaAttribute.Description;
-                }
-
-                // We can also inject scalar-specific extensions here
-                if (schemaAttribute.MockValue != null)
-                {
-                    // Handle injecting the mock value into the schema extension or example property
-#if NET9_0
-                    schema.Extensions["x-scalar-mock"] = new OpenApiString(schemaAttribute.MockValue.ToString());
-#elif NET10_0
-                    schema.Extensions?["x-scalar-mock"] = new JsonNodeExtension(JsonValue.Create(schemaAttribute.MockValue.ToString() ?? ""));
-#endif
-                }
-
-                // TODO: Complete the refrence to the enum varnames
-                if (type.IsEnum)
-                {
-                    var t = type.GetEnumUnderlyingType();
-                    var enumAttribute = type.GetCustomAttribute<ScalarEnumAttribute>();
-                    if (enumAttribute != null)
-                    {
-                        if (!string.IsNullOrEmpty(enumAttribute.Description))
-                        {
-                            schema.Description = enumAttribute.Description;
-                        }
-                        schema.Title = enumAttribute.Title;
-                    }
-                }
-            }
-
-            return Task.CompletedTask;
+            return new SchemaProcessor().ProcessAsync(schema, context, cancellationToken);
         }
     }
 }

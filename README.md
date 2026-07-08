@@ -84,7 +84,13 @@ Provide custom schema modifications for specific types.
 ### `[ScalarIgnore]`
 Hide an operation or a property from the generated OpenAPI documentation entirely.
 
+### `[ScalarStability]`
+Provide a value that adds a badge for the endpoint (accepted values: Experimental, Stable, Deprecated).
+
 ## Enums
+
+### 'ScalarStabilityLevel'
+A stringly typed enum containing the supported Stability Levels
 
 ### `ScalarContentType`
 A strongly typed enum containing all standard HTTP content types (e.g., `Json`, `Xml`, `MultipartFormData`, `EventStream`, etc.). It includes an extension method `.ToMimeString()` to easily convert the enum values to their raw MIME string representation (`"application/json"`, `"text/event-stream"`, etc.).

@@ -42,6 +42,12 @@ public class ScalarSwashbuckleOperationFilter : IOperationFilter
 
         // 3. Handle ScalarCodeSampleAttribute
         new CodeSampleProcessor().ProcessAsync(operation, context);
+
+        // 4. Handle ScalarBadgeAttribute
+        new BadgeProcessor().ProcessAsync(operation, context);
+
+        //5. Handle ScalarStabilityAttribute
+        new StabilityProcessor().ProcessAsync(operation, context);
     }
 }
 #endif
