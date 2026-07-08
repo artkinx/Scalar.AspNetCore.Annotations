@@ -1,9 +1,11 @@
 
 #if NET9_0_OR_GREATER
 
-using Artkinx.ScalarAspNetCore.Annotations.Attributes;
 using Microsoft.AspNetCore.OpenApi;
 using System.Text.Json.Nodes;
+using System.Text.Json;
+using Artkinx.ScalarAspNetCore.Annotations.Core.Attributes;
+using Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors;
 
 
 #if NET9_0
@@ -33,6 +35,7 @@ public class ScalarOperationTransformer : IOpenApiOperationTransformer
         // Extract all attributes from the endpoint metadata
         var metadata = context.Description.ActionDescriptor.EndpointMetadata;
 
+
 #if NET9_0
         if (operation.Extensions == null)
         {
@@ -47,158 +50,63 @@ public class ScalarOperationTransformer : IOpenApiOperationTransformer
 
 
         // 1. Handle ScalarOperationAttribute for general operation metadata
-        var scalarOp = metadata.OfType<ScalarOperationAttribute>().FirstOrDefault();
+        new OperationProcessor().ProcessAsync(operation, context, cancellationToken);
 
-        if (scalarOp != null)
-        {
-            if (!string.IsNullOrEmpty(scalarOp.Summary))
-                operation.Summary = scalarOp.Summary;
+  // 1. Handle Badges
+        new BadgeProcessor().ProcessAsync(operation, context, cancellationToken);
 
-            if (!string.IsNullOrEmpty(scalarOp.Description))
-                operation.Description = scalarOp.Description;
-
-            if (!string.IsNullOrEmpty(scalarOp.OperationId))
-                operation.OperationId = scalarOp.OperationId;
-
-            if (scalarOp.Tags?.Any() is true)
-            {
-#if NET10_0 
-                operation.Tags = scalarOp.Tags.Select(selector: t => new OpenApiTagReference(referenceId: t)).ToHashSet();
-#elif NET9_0
-                operation.Tags = [.. scalarOp.Tags.Select(selector: t => new OpenApiTag() { Name = t })];
-#endif
-            }
-
-            if (!string.IsNullOrEmpty(scalarOp.ThemeColor))
-            {
-                // In Scalar, color isn't a native property, so we use their recognized x-extension or tag it
-#if NET9_0
-                operation.Extensions["x-scalar-color"] = new OpenApiString(scalarOp.ThemeColor);
-
-#elif  NET10_0
-                operation.Extensions?["x-scalar-color"] = new JsonNodeExtension(JsonValue.Create(scalarOp.ThemeColor));
-#endif
-            }
-        }
-
-        var scalarResponse = metadata.OfType<ScalarResponseAttribute>().ToList();
-
-#if NET9_0 || NET10_0
-        scalarResponse?.ForEach(r =>
-            {
-                var statusCode = r.StatusCode.ToString();
-                if (operation.Responses.ContainsKey(statusCode))
-                {
-                    var response = operation.Responses[statusCode];
-                    if (!string.IsNullOrEmpty(r.Description))
-                    {
-                        response.Description = r.Description;
-                    }
-
-                    if (!string.IsNullOrEmpty(r.ContentTypes?.FirstOrDefault()))
-                    {
-                        foreach (var ct in r.ContentTypes)
-                        {
-                            if (!response.Content.ContainsKey(ct))
-                            {
-                                response.Content[ct] = new OpenApiMediaType()
-                                {
-
-                                };
-                            }
-                        }
-                        //response.Content = r.ContentTypes.ToDictionary(ct => ct, ct => new OpenApiMediaType());
-                    }
-                }
-            });
-#endif
-        // 1. Handle Badges
-        var badges = metadata.OfType<ScalarBadgeAttribute>().ToList();
-        if (badges.Count > 0)
-        {
-#if NET9_0
-            var badgeArray = new OpenApiArray();
-            foreach (var badge in badges)
-            {
-                // Injecting Scalar's expected x- extension format
-                badgeArray.Add(new OpenApiObject
-                {
-                    ["name"] = new OpenApiString(badge.Name),
-                    ["position"] = new OpenApiString(badge.Position.ToString().ToLowerInvariant()),
-                    ["color"] = new OpenApiString(badge.Color)
-                });
-            }
-            operation.Extensions["x-badges"] = badgeArray;
-#elif NET10_0
-            var badgeArray = new JsonArray();
-            foreach (var badge in badges)
-            {
-                badgeArray.Add(new JsonObject()
-                {
-                    ["name"] = JsonValue.Create(badge.Name),
-                    ["position"] = JsonValue.Create(badge.Position.ToString().ToLowerInvariant()),
-                    ["color"] = JsonValue.Create(badge.Color)
-                });
-            }
-            operation.Extensions?["x-badges"] = new JsonNodeExtension(badgeArray);
-#endif
-        }
 
         // 2. Handle Code Samples
-        var codeSamples = metadata.OfType<ScalarCodeSampleAttribute>().ToList();
-        if (codeSamples.Count > 0)
-        {
-#if NET9_0
-            var sampleArray = new OpenApiArray();
-            foreach (var sample in codeSamples)
-            {
-                sampleArray.Add(new OpenApiObject
-                {
-                    ["lang"] = new OpenApiString(sample.Language),
-                    ["source"] = new OpenApiString(sample.Code),
-                    ["label"] = new OpenApiString(string.IsNullOrEmpty(sample.Title) ? sample.Language : sample.Title)
-                });
-            }
-            operation.Extensions["x-codeSamples"] = sampleArray;
-#elif NET10_0
-            var sampleArray = new JsonArray();
-            foreach (var sample in codeSamples)
-            {
-                sampleArray.Add(new JsonObject()
-                {
-                    ["lang"] = JsonValue.Create(sample.Language),
-                    ["source"] = JsonValue.Create(sample.Code),
-                    ["label"] = JsonValue.Create(string.IsNullOrEmpty(sample.Title) ? sample.Language : sample.Title)
-                });
-            }
-            operation.Extensions?["x-codeSamples"] = new JsonNodeExtension(sampleArray);
-#endif
-        }
+        new CodeSampleProcessor().ProcessAsync(operation, context, 
+            cancellationToken);
 
         // 3. Handle Exclusions
-        if (metadata.OfType<ScalarExcludeAttribute>().Any())
-        {
-#if  NET9_0
-            operation.Extensions["x-scalar-ignore"] = new OpenApiBoolean(true);
-#elif NET10_0
-            operation.Extensions!["x-scalar-ignore"] = new JsonNodeExtension(JsonValue.Create(true));
-#endif
-        }
+        new ExclusionProcessor().ProcessAsync(operation, context, cancellationToken);
 
-        if (metadata.OfType<ScalarStabilityAttribute>().Any())
-        {
-            var stabilityAttr = metadata.OfType<ScalarStabilityAttribute>().First();
-#if NET9_0
-            operation.Extensions["x-scalar-stability"] = new OpenApiString(stabilityAttr.Level.ToString().ToLowerInvariant());
-#elif  NET10_0
-            operation.Extensions!["x-scalar-stability"] = new JsonNodeExtension(JsonValue.Create(stabilityAttr.Level.ToString().ToLowerInvariant()));
-#endif
-        }
-
-        Console.WriteLine($"Transformed operation {operation.OperationId} with Scalar attributes.");
-        Console.WriteLine($"Extensions are : {string.Join(", ", operation.Extensions!.Keys)}");
+        // 4. Handle Stability
+        new StabilityProcessor().ProcessAsync(operation, context, cancellationToken);
 
         return Task.CompletedTask;
     }
+
+
+
 }
 #endif
+
+
+
+
+public static class Converters
+{
+    public static object? CreateInstance(Type type)
+    {
+        // Handle standard system primitives and strings directly
+        if (type == typeof(string)) return "string";
+        if (type == typeof(int) || type == typeof(long)) return 0;
+        if (type == typeof(bool)) return false;
+        if (type == typeof(double) || type == typeof(decimal)) return 0.0;
+        if (type == typeof(Guid)) return Guid.NewGuid();
+        if (type == typeof(DateTime)) return DateTime.UtcNow;
+
+        try
+        {
+            // For complex custom types/DTOs, invoke the parameterless constructor
+            return Activator.CreateInstance(type);
+        }
+        catch
+        {
+            // Fallback if the object lacks a default constructor (e.g., record types or custom constructors)
+            // You can optionally swap this for a mock object framework or uninitialized object storage
+            return System.Runtime.Serialization.FormatterServices.GetUninitializedObject(type);
+        }
+    }
+
+    public static string ConvertToXmlString(object obj)
+    {
+        using var stringWriter = new System.IO.StringWriter();
+        var serializer = new System.Xml.Serialization.XmlSerializer(obj.GetType());
+        serializer.Serialize(stringWriter, obj);
+        return stringWriter.ToString();
+    }
+}

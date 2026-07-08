@@ -1,5 +1,3 @@
-
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Artkinx.ScalarAspNetCore.Annotations.Attributes
+namespace Artkinx.ScalarAspNetCore.Annotations.Core.Attributes
 {
     /// <summary>
     /// Represents an attribute for adding badges to API endpoints in the Scalar UI.

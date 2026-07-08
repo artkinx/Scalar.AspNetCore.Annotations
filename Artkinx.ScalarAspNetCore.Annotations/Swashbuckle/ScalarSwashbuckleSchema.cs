@@ -8,8 +8,8 @@ using Microsoft.OpenApi;
 
 using System.Reflection;
 using System.Text.Json.Nodes;
-using Artkinx.ScalarAspNetCore.Annotations.Attributes;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Artkinx.ScalarAspNetCore.Annotations.Core.Attributes;
 
 namespace Artkinx.ScalarAspNetCore.Annotations.Swashbuckle;
 

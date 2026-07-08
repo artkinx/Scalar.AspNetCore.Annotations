@@ -15,8 +15,9 @@ using Microsoft.OpenApi;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 #endif
-using Artkinx.ScalarAspNetCore.Annotations.Attributes;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Artkinx.ScalarAspNetCore.Annotations.Core.Attributes;
+using Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors;
 
 
 namespace Artkinx.ScalarAspNetCore.Annotations.Swashbuckle;
@@ -34,78 +35,13 @@ public class ScalarSwashbuckleOperationFilter : IOperationFilter
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
         // 1. Handle ScalarOperationAttribute
-        var scalarOperation = context.MethodInfo.GetCustomAttribute<ScalarOperationAttribute>();
-        if (scalarOperation != null)
-        {
-            if (!string.IsNullOrEmpty(scalarOperation.Summary))
-                operation.Summary = scalarOperation.Summary;
-
-            if (!string.IsNullOrEmpty(scalarOperation.Description))
-                operation.Description = scalarOperation.Description;
-
-            if (!string.IsNullOrEmpty(scalarOperation.OperationId))
-                operation.OperationId = scalarOperation.OperationId;
-
-            if (scalarOperation.Tags != null && scalarOperation.Tags.Any())
-            {
-#if NET9_0
-                operation.Tags = scalarOperation.Tags.Select(t => new OpenApiTag { Name = t }).ToList();
-#elif NET10_0
-                operation.Tags = (ISet<OpenApiTagReference>?)scalarOperation.Tags.Select(selector: t => new OpenApiTagReference(referenceId: t)).ToList();
-#endif
-            }
-
-            if (!string.IsNullOrEmpty(scalarOperation.ThemeColor))
-            {
-#if NET9_0
-                operation.Extensions["x-scalar-color"] = new OpenApiString(scalarOperation.ThemeColor);
-#elif NET10_0
-                operation.Extensions?["x-scalar-color"] = new JsonNodeExtension(JsonValue.Create(scalarOperation.ThemeColor));
-#endif
-            }
-        }
+        new OperationProcessor().ProcessAsync(operation, context);
 
         // 2. Handle ScalarExcludeAttribute
-        var excludeAttribute = context.MethodInfo.GetCustomAttribute<ScalarExcludeAttribute>();
-        if (excludeAttribute != null)
-        {
-#if NET9_0
-            operation.Extensions["x-scalar-ignore"] = new OpenApiBoolean(true);
-#elif NET10_0
-               operation.Extensions?["x-scalar-ignore"] = new JsonNodeExtension(JsonValue.Create(true));
-#endif
-        }
+        new ExclusionProcessor().ProcessAsync(operation, context);
 
         // 3. Handle ScalarCodeSampleAttribute
-        var codeSamples = context.MethodInfo.GetCustomAttributes<ScalarCodeSampleAttribute>().ToList();
-        if (codeSamples.Count > 0)
-        {
-#if NET9_0
-            var sampleArray = new OpenApiArray();
-            foreach (var sample in codeSamples)
-            {
-                sampleArray.Add(new OpenApiObject
-                {
-                    ["lang"] = new OpenApiString(sample.Language),
-                    ["source"] = new OpenApiString(sample.Code),
-                    ["label"] = new OpenApiString(string.IsNullOrEmpty(sample.Title) ? sample.Language : sample.Title)
-                });
-            }
-            operation.Extensions["x-codeSamples"] = sampleArray;
-#elif NET10_0
-            var sampleArray = new List<dynamic>();
-
-            foreach (var sample in codeSamples)
-            {
-               sampleArray.Add(new Dictionary<string, dynamic>
-               {
-                    ["lang"] =  new JsonNodeExtension(JsonValue.Create(sample.Language)),
-                    ["source"] =  new JsonNodeExtension(JsonValue.Create(sample.Code)),
-                    ["label"] =  new JsonNodeExtension(JsonValue.Create(sample.Title)),
-               });
-            }
-#endif
-        }
+        new CodeSampleProcessor().ProcessAsync(operation, context);
     }
 }
 #endif

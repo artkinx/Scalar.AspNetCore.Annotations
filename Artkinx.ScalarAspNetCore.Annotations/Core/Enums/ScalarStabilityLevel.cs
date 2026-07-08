@@ -1,4 +1,4 @@
-namespace Artkinx.ScalarAspNetCore.Annotations.Enums;
+namespace Artkinx.ScalarAspNetCore.Annotations.Core.Enums;
 
 /// <summary>
 /// The stability level of the API operation.

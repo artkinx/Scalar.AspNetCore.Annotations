@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Artkinx.ScalarAspNetCore.Annotations.Enums
+namespace Artkinx.ScalarAspNetCore.Annotations.Core.Enums
 {
     /// <summary>
     /// Represents standard content types used in HTTP APIs.

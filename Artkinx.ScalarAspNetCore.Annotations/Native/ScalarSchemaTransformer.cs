@@ -8,9 +8,9 @@ using Microsoft.OpenApi.Models;
 #elif NET10_0
 using Microsoft.OpenApi;
 #endif
-using Artkinx.ScalarAspNetCore.Annotations.Attributes;
 using System.Reflection;
 using System.Text.Json.Nodes;
+using Artkinx.ScalarAspNetCore.Annotations.Core.Attributes;
 
 namespace Artkinx.ScalarAspNetCore.Annotations.Native
 {

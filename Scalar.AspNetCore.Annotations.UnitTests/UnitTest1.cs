@@ -1,7 +1,7 @@
 using System.Net;
 using System.Text.Json;
 using Artkinx.ScalarAspNetCore.Annotations.Attributes;
-using Artkinx.ScalarAspNetCore.Annotations.Enums;
+using Artkinx.ScalarAspNetCore.Annotations.Core.Enums;
 using Artkinx.ScalarAspNetCore.Annotations.Native;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

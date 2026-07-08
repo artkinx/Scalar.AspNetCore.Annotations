@@ -1,12 +1,10 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Artkinx.ScalarAspNetCore.Annotations.Attributes;
+namespace Artkinx.ScalarAspNetCore.Annotations.Core.Attributes;
 
 [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = true)]
 public class ScalarCodeSampleAttribute : Attribute

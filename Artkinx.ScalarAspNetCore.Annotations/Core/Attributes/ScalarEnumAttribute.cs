@@ -1,4 +1,4 @@
-namespace Artkinx.ScalarAspNetCore.Annotations.Attributes;
+namespace Artkinx.ScalarAspNetCore.Annotations.Core.Attributes;
 
 /// <summary>
 /// Represents

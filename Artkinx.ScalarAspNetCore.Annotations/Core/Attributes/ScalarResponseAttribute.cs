@@ -1,8 +1,8 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Artkinx.ScalarAspNetCore.Annotations.Enums;
+using Artkinx.ScalarAspNetCore.Annotations.Core.Enums;
 
-namespace Artkinx.ScalarAspNetCore.Annotations.Attributes
+namespace Artkinx.ScalarAspNetCore.Annotations.Core.Attributes
 {
     /// <summary>
     /// Marker attribute to indicate that the response of an API endpoint should be treated as a "Scalar response" in the context of API documentation generation. This attribute can be used by tools like Swashbuckle to apply specific transformations or enhancements to the OpenAPI documentation for endpoints that return Scalar responses, such as adding custom extensions, modifying schema representations, or applying special formatting rules.
