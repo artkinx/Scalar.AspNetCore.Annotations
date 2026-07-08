@@ -1,5 +1,5 @@
-﻿#if NET9_0_OR_GREATER
-#if NET9_0
+﻿#if NET8_0_OR_GREATER
+#if NET9_0 || NET8_0
 using Microsoft.OpenApi.Any;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.OpenApi.Models;
@@ -39,6 +39,7 @@ public class ScalarSwashbuckleSchemaFilter : ISchemaFilter
     }
 
 #if NET10_0
+    /// <inheritDoc/>
     public void Apply(IOpenApiSchema schema, SchemaFilterContext context)
     {
         if (context.Type == null) return;
@@ -49,4 +50,17 @@ public class ScalarSwashbuckleSchemaFilter : ISchemaFilter
     }
 #endif
 }
+
+//#elif NET8_0
+//using Microsoft.OpenApi.Models;
+//using Swashbuckle.AspNetCore.SwaggerGen;
+
+//public class ScalarSwashbuckleSchemaFilter : ISchemaFilter
+//{
+//    public void Apply(OpenApiSchema schema, SchemaFilterContext context)
+//    {
+//        throw new NotImplementedException();
+//    }
+//}
+
 #endif

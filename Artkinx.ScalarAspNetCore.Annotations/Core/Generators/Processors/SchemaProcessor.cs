@@ -116,7 +116,7 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
                         schemaProperty.Description = propAttribute.Description;
 
                     if (!string.IsNullOrEmpty(propAttribute.Format))
-#if NET9_0
+#if NET9_0 || NET8_0
                         schemaProperty.Format = propAttribute.Format;
 #elif NET10_0
                         schema.Format = propAttribute.Format;
@@ -124,7 +124,8 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
 
                     if (propAttribute.ReadOnly)
                     {
-#if NET9_0
+#if NET9_0 || NET8_0
+
                         schemaProperty.ReadOnly = true;
 #elif NET10_0
                         schema.ReadOnly = propAttribute.ReadOnly;
@@ -133,7 +134,8 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
 
                     if (propAttribute.WriteOnly)
                     {
-#if NET9_0
+#if NET9_0 || NET8_0
+
                         schemaProperty.WriteOnly = true;
 
 #elif NET10_0        
@@ -142,7 +144,8 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
                     }
                     if (propAttribute.MockValue != null)
                     {
-#if NET9_0
+#if NET9_0 || NET8_0
+
                         // Scalar naturally consumes the standard OpenAPI 'example' property for its UI client
                         schemaProperty.Example = new OpenApiString(propAttribute.MockValue.ToString());
 
