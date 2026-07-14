@@ -21,15 +21,27 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
 #if NET9_0_OR_GREATER
         public override Task ProcessAsync(OpenApiOperation operation, OpenApiOperationTransformerContext context, CancellationToken cancellationToken = default)
         {
-            var metadata = context.Description.ActionDescriptor.EndpointMetadata.OfType<ScalarStabilityAttribute>();
-            if (metadata.Any())
+            try
             {
-                var stabilityAttr = metadata.OfType<ScalarStabilityAttribute>().First();
+                var metadata = context.Description.ActionDescriptor.EndpointMetadata.OfType<ScalarStabilityAttribute>();
+                if (metadata.Any())
+                {
+                    var stabilityAttr = metadata.OfType<ScalarStabilityAttribute>().First();
 #if NET9_0
-            operation.Extensions["x-scalar-stability"] = new OpenApiString(stabilityAttr.Level.ToString().ToLowerInvariant());
+                    operation.Extensions["x-scalar-stability"] = new OpenApiString(stabilityAttr.Level.ToString().ToLowerInvariant());
 #elif NET10_0
-                operation.Extensions!["x-scalar-stability"] = new JsonNodeExtension(JsonValue.Create(stabilityAttr.Level.ToString().ToLowerInvariant()));
+                    if(operation.Extensions == null)
+                    {
+                        operation.Extensions = new Dictionary<string, IOpenApiExtension>();
+                    }
+                    operation.Extensions["x-scalar-stability"] = new JsonNodeExtension(JsonValue.Create(stabilityAttr.Level.ToString().ToLowerInvariant()));
 #endif
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Error processing operation: {context.Description.ActionDescriptor.DisplayName}. Exception: {ex.Message}");
             }
 
             return Task.CompletedTask;
@@ -43,17 +55,30 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
 
         public override Task ProcessAsync(OpenApiOperation operation, OperationFilterContext context, CancellationToken cancellationToken = default)
         {
-            var metadata = context.MethodInfo.GetCustomAttributes<ScalarStabilityAttribute>();
-            if (metadata.Any())
+            try
             {
-                var stabilityAttr = metadata.OfType<ScalarStabilityAttribute>().First();
+                
+                var stabilityAttr = context.MethodInfo.GetCustomAttribute<ScalarStabilityAttribute>();
+                if (stabilityAttr != null)
+                {
 #if NET9_0
-            operation.Extensions["x-scalar-stability"] = new OpenApiString(stabilityAttr.Level.ToString().ToLowerInvariant());
+                    Console.WriteLine("..........................Writing NET9_0");
+                    operation.Extensions["x-scalar-stability"] = new OpenApiString(stabilityAttr.Level.ToString().ToLowerInvariant());
+                    Console.WriteLine($"Added extension 'x-scalar-stability' with value: {stabilityAttr.Level.ToString().ToLowerInvariant()}");
 #elif NET10_0
-                operation.Extensions!["x-scalar-stability"] = new JsonNodeExtension(JsonValue.Create(stabilityAttr.Level.ToString().ToLowerInvariant()));
-#endif
-            }
+                    if (operation.Extensions == null)
+                    {
+                        operation.Extensions = new Dictionary<string, IOpenApiExtension>();
+                    }
 
+                    operation.Extensions["x-scalar-stability"] = new JsonNodeExtension(JsonValue.Create(stabilityAttr.Level.ToString().ToLowerInvariant()));
+#endif
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error processing operation: {context.MethodInfo.Name}. Exception: {ex.Message}");
+            }
             return Task.CompletedTask;
         }
 

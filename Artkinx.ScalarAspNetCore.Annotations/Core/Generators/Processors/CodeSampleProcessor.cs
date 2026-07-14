@@ -49,7 +49,11 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
                         ["label"] = JsonValue.Create(string.IsNullOrEmpty(sample.Title) ? sample.Language : sample.Title)
                     });
                 }
-                operation.Extensions?["x-codeSamples"] = new JsonNodeExtension(sampleArray);
+                if (operation.Extensions == null)
+                {
+                    operation.Extensions = new Dictionary<string, IOpenApiExtension>();
+                }
+                operation.Extensions["x-codeSamples"] = new JsonNodeExtension(sampleArray);
 #endif
             }
             return Task.CompletedTask;
@@ -90,7 +94,11 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
                         ["label"] = JsonValue.Create(string.IsNullOrEmpty(sample.Title) ? sample.Language : sample.Title)
                     });
                 }
-                operation.Extensions?["x-codeSamples"] = new JsonNodeExtension(sampleArray);
+                if (operation.Extensions == null)
+                {
+                    operation.Extensions = new Dictionary<string, IOpenApiExtension>();
+                }
+                operation.Extensions["x-codeSamples"] = new JsonNodeExtension(sampleArray);
 #endif
             }
                 return Task.CompletedTask;

@@ -31,9 +31,9 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Native
         /// </returns>
         public Task TransformAsync(OpenApiSchema schema, OpenApiSchemaTransformerContext context, CancellationToken cancellationToken)
         {
-            // context.JsonTypeInfo.Type gives us the underlying C# class/record
+            new SchemaProcessor().ProcessAsync(schema, context, cancellationToken);
 
-            return new SchemaProcessor().ProcessAsync(schema, context, cancellationToken);
+            return Task.CompletedTask;
         }
     }
 }

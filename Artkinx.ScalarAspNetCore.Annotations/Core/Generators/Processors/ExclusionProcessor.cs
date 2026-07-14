@@ -27,7 +27,11 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
 #if NET9_0
             operation.Extensions["x-scalar-ignore"] = new OpenApiBoolean(true);
 #elif NET10_0
-                operation.Extensions!["x-scalar-ignore"] = new JsonNodeExtension(JsonValue.Create(true));
+                if (operation.Extensions == null)
+                {
+                    operation.Extensions = new Dictionary<string, IOpenApiExtension>();
+                }
+                operation.Extensions["x-scalar-ignore"] = new JsonNodeExtension(JsonValue.Create(true));
 #endif
             }
             return Task.CompletedTask;
@@ -41,7 +45,11 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
 #if NET9_0
             schema.Extensions["x-scalar-ignore"] = new OpenApiBoolean(true);
 #elif NET10_0
-                schema.Extensions!["x-scalar-ignore"] = new JsonNodeExtension(JsonValue.Create(true));
+                if (schema.Extensions == null)
+                {
+                    schema.Extensions = new Dictionary<string, IOpenApiExtension>();
+                }
+                schema.Extensions["x-scalar-ignore"] = new JsonNodeExtension(JsonValue.Create(true));
 #endif
             }
 
@@ -57,6 +65,10 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
 #if NET9_0
             operation.Extensions["x-scalar-ignore"] = new OpenApiBoolean(true);
 #elif NET10_0
+                if (operation.Extensions == null)
+                {
+                    operation.Extensions = new Dictionary<string, IOpenApiExtension>();
+                }
                 operation.Extensions?["x-scalar-ignore"] = new JsonNodeExtension(JsonValue.Create(true));
 #endif
             }
@@ -71,6 +83,10 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
 #if NET9_0
                 schema.Extensions["x-scalar-ignore"] = new OpenApiBoolean(true);
 #elif NET10_0
+                if (schema.Extensions == null)
+                {
+                    schema.Extensions = new Dictionary<string, IOpenApiExtension>();
+                }
                 schema.Extensions?["x-scalar-ignore"] = new JsonNodeExtension(JsonValue.Create(true));
 #endif
             }

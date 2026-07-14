@@ -1,4 +1,5 @@
 <Solution>
-  <Project Path="Artkinx.ScalarAspNetCore.Annotations/Artkinx.ScalarAspNetCore.Annotations.csproj"/>
-  <Project Path="Scalar.AspNetCore.Annotations.UnitTests/Scalar.AspNetCore.Annotations.UnitTests.csproj"/>
+  <Project Path="Artkinx.ScalarAspNetCore.Annotations/Artkinx.ScalarAspNetCore.Annotations.csproj" />
+  <Project Path="Scalar.Annotation.Test.Api/Scalar.Annotation.Test.Api.csproj" Id="5660302d-fefe-47d5-8e49-a2a50f26958e" />
+  <Project Path="Scalar.AspNetCore.Annotations.UnitTests/Scalar.AspNetCore.Annotations.UnitTests.csproj" />
 </Solution>

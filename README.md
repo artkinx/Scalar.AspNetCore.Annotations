@@ -87,6 +87,9 @@ Hide an operation or a property from the generated OpenAPI documentation entirel
 ### `[ScalarStability]`
 Provide a value that adds a badge for the endpoint (accepted values: Experimental, Stable, Deprecated).
 
+### `[ScalarOrder]`
+Enable custom ordering of schema properties in the Scalar UI by specifying a numeric order value.
+
 ## Enums
 
 ### 'ScalarStabilityLevel'

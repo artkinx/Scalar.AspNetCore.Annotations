@@ -1,4 +1,4 @@
-﻿using Swashbuckle.AspNetCore.SwaggerGen;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.AspNetCore.OpenApi;
 using Artkinx.ScalarAspNetCore.Annotations.Core.Attributes;
 
@@ -85,79 +85,86 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
             throw new NotImplementedException();
         }
 
+
         public override Task ProcessAsync(OpenApiSchema schema, SchemaFilterContext context, CancellationToken cancellationToken = default)
         {
             var classAttribute = context.Type.GetCustomAttribute<ScalarSchemaAttribute>();
+            // Console.WriteLine($"Processing ScalarSchemaAttribute for type: {context.Type.Name}");
+
             if (classAttribute != null)
             {
-                if (!string.IsNullOrEmpty(classAttribute.Description))
-                    schema.Description = classAttribute.Description;
-            }
+                // Console.WriteLine($"Found ScalarSchemaAttribute on type: {context.Type.Name}");
 
-            // 2. Handle Property-Level Attributes
-            if (schema.Properties == null) return Task.CompletedTask;
+                // 2. Handle Property-Level Attributes
+                if (schema.Properties == null) return Task.CompletedTask;
 
-            var properties = context.Type.GetProperties();
-            foreach (var property in properties)
-            {
-                var propAttribute = property.GetCustomAttribute<ScalarSchemaAttribute>();
-                if (propAttribute == null) continue;
-
-                // Swashbuckle typically camelCases schema properties. 
-                // We use case-insensitive matching to find the exact OpenAPI property key.
-                var schemaPropertyKey = schema.Properties.Keys
-                    .FirstOrDefault(k => k.Equals(property.Name, StringComparison.OrdinalIgnoreCase));
-
-                if (schemaPropertyKey != null)
+                var properties = context.Type.GetProperties();
+                foreach (var property in properties)
                 {
-                    var schemaProperty = schema.Properties[schemaPropertyKey];
+                    var propAttribute = property.GetCustomAttribute<ScalarSchemaAttribute>();
+                    if (propAttribute == null) continue;
 
-                    if (!string.IsNullOrEmpty(propAttribute.Description))
-                        schemaProperty.Description = propAttribute.Description;
+                    // Swashbuckle typically camelCases schema properties. 
+                    // We use case-insensitive matching to find the exact OpenAPI property key.
+                    var schemaPropertyKey = schema.Properties.Keys
+                        .FirstOrDefault(k => k.Equals(property.Name, StringComparison.OrdinalIgnoreCase));
 
-                    if (!string.IsNullOrEmpty(propAttribute.Format))
+                    if (schemaPropertyKey != null)
+                    {
+                        var schemaProperty = schema.Properties[schemaPropertyKey];
+
+                        if (!string.IsNullOrEmpty(propAttribute.Description))
+                            schemaProperty.Description = propAttribute.Description;
+
+                        if (!string.IsNullOrEmpty(propAttribute.Format))
 #if NET9_0 || NET8_0
-                        schemaProperty.Format = propAttribute.Format;
+                            schemaProperty.Format = propAttribute.Format;
 #elif NET10_0
-                        schema.Format = propAttribute.Format;
+                            schema.Format = propAttribute.Format;
 #endif
 
-                    if (propAttribute.ReadOnly)
-                    {
+                        if (propAttribute.ReadOnly)
+                        {
 #if NET9_0 || NET8_0
 
-                        schemaProperty.ReadOnly = true;
+                            schemaProperty.ReadOnly = true;
 #elif NET10_0
-                        schema.ReadOnly = propAttribute.ReadOnly;
+                            schema.ReadOnly = propAttribute.ReadOnly;
 #endif
-                    }
+                        }
 
-                    if (propAttribute.WriteOnly)
-                    {
+                        if (propAttribute.WriteOnly)
+                        {
 #if NET9_0 || NET8_0
 
-                        schemaProperty.WriteOnly = true;
+                            schemaProperty.WriteOnly = true;
 
-#elif NET10_0        
-                        schema.WriteOnly = true;
+#elif NET10_0
+                            schema.WriteOnly = true;
 #endif
-                    }
-                    if (propAttribute.MockValue != null)
-                    {
+                        }
+                        if (propAttribute.MockValue != null)
+                        {
 #if NET9_0 || NET8_0
 
-                        // Scalar naturally consumes the standard OpenAPI 'example' property for its UI client
-                        schemaProperty.Example = new OpenApiString(propAttribute.MockValue.ToString());
+                            // Scalar naturally consumes the standard OpenAPI 'example' property for its UI client
+                            schemaProperty.Example = new OpenApiString(propAttribute.MockValue.ToString());
 
-                        // Fallback specific extension if needed
-                        schemaProperty.Extensions["x-scalar-mock"] = new OpenApiString(propAttribute.MockValue.ToString());
+                            // Fallback specific extension if needed
+                            schemaProperty.Extensions["x-scalar-mock"] = new OpenApiString(propAttribute.MockValue.ToString());
 
-#elif NET10_0                        
-                        schemaProperty?.Extensions?["x-scalar-mock"] = new JsonNodeExtension(JsonValue.Create(propAttribute.MockValue.ToString() ?? ""));
+#elif NET10_0
+                            schemaProperty?.Extensions?["x-scalar-mock"] = new JsonNodeExtension(JsonValue.Create(propAttribute.MockValue.ToString() ?? ""));
 #endif
+                        }
                     }
                 }
             }
+
+            // // ScalarOrderAttribute targets properties, not classes, so we always delegate
+            // // to OrderProcessor — it will early-return if no properties carry the attribute.
+            // new OrderProcessor().ProcessAsync(schema, context);
+
             return Task.CompletedTask;
         }
     }

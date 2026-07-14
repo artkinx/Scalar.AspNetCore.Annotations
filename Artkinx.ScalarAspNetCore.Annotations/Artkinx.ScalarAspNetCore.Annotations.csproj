@@ -8,7 +8,7 @@
     <RootNamespace>Artkinx.ScalarAspNetCore.Annotations</RootNamespace>
 
     <PackageId>Artkinx.ScalarAspNetCore.Annotations</PackageId>
-    <Version>1.0.0-preview.15</Version>
+    <Version>1.0.0-preview.16</Version>
     <Authors>Adunbi Moses</Authors>
     <Description>Declarative attributes for configuring Scalar OpenAPI documentation in .NET and Swashbuckle.</Description>
     <PackageTags>scalar;openapi;swagger;swashbuckle;aspnetcore;api</PackageTags>

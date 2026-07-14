@@ -49,7 +49,11 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
                         ["color"] = JsonValue.Create(badge.Color)
                     });
                 }
-                operation.Extensions?["x-badges"] = new JsonNodeExtension(badgeArray);
+                if (operation.Extensions == null)
+                {
+                    operation.Extensions = new Dictionary<string, IOpenApiExtension>();
+                }
+                operation.Extensions["x-badges"] = new JsonNodeExtension(badgeArray);
 #endif
             }
 
@@ -66,6 +70,7 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
             var badges = context.MethodInfo.GetCustomAttributes<ScalarBadgeAttribute>().ToList();
             if (badges.Count > 0)
             {
+                Console.WriteLine($"Processing {badges.Count} badge(s) for operation {operation.OperationId}");
 #if NET9_0
                 var badgeArray = new OpenApiArray();
                 foreach (var badge in badges)
@@ -90,7 +95,12 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
                         ["color"] = JsonValue.Create(badge.Color)
                     });
                 }
-                operation.Extensions?["x-badges"] = new JsonNodeExtension(badgeArray);
+                if (operation.Extensions == null)
+                {
+                    operation.Extensions = new Dictionary<string, IOpenApiExtension>();
+                }
+                operation.Extensions["x-badges"] = new JsonNodeExtension(badgeArray);
+                Console.WriteLine($"Added {badges.Count} badge(s) to operation {operation.OperationId} with Extensions: {string.Join(", ", operation.Extensions.Keys)} ANd value names: {string.Join(", ", string.Join(", ", operation.Extensions.Values.Select(v => v.ToString())))}");
 #endif
             }
 

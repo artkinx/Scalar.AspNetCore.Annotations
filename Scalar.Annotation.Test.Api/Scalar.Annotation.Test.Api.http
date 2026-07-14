@@ -1,0 +1,6 @@
+@Scalar.Annotation.Test.Api_HostAddress = http://localhost:5298
+
+GET {{Scalar.Annotation.Test.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

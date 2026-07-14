@@ -1,9 +1,9 @@
-﻿#if NET9_0_OR_GREATER
+﻿#if NET8_0_OR_GREATER
 using Artkinx.ScalarAspNetCore.Annotations.Native;
 
 
 using Microsoft.OpenApi;
-#if NET9_0
+#if NET9_0 || NET8_0
 using Microsoft.OpenApi.Models;
 #endif
 using System;
