@@ -1,3 +1,6 @@
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using Artkinx.ScalarAspNetCore.Annotations.Core.Attributes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Scalar.Annotation.Test.Api.Controllers
@@ -12,6 +15,7 @@ namespace Scalar.Annotation.Test.Api.Controllers
         ];
 
         [HttpGet(Name = "GetWeatherForecast")]
+        [ScalarOperation(Summary = "Gets the weather data", DisplayName = "Get weather Data", Tags = ["Weather"])]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

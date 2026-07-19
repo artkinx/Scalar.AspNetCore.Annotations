@@ -23,6 +23,7 @@ public static class ScalarNativeExtensions
     {
         options.AddOperationTransformer<ScalarOperationTransformer>();
         options.AddSchemaTransformer<ScalarSchemaTransformer>();
+        options.AddDocumentTransformer<ScalarNativeDocumentTransformer>();
         
         return options;
     }

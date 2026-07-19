@@ -61,6 +61,9 @@ public class ScalarSwashbuckleSchemaFilter : ISchemaFilter
             new OrderProcessor().ProcessAsync(concreteSchema, context);
 
             Console.WriteLine("=== DONE PROCESSING ORDER ATTRIBUTES ===");
+                        
+            new EnumProcessor().ProcessAsync(concreteSchema, context);
+                                    
             return;
         }
 
@@ -127,6 +130,8 @@ public class ScalarSwashbuckleSchemaFilter : ISchemaFilter
 
         // 2. Order Attribute
         new OrderProcessor().ProcessAsync(openSchema, context);
+                
+        new EnumProcessor().ProcessAsync(openSchema, context);
     }
 #endif
 }

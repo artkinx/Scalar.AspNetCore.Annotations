@@ -26,18 +26,18 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
             if (badges.Count > 0)
             {
 #if NET9_0
-            var badgeArray = new OpenApiArray();
-            foreach (var badge in badges)
-            {
-                // Injecting Scalar's expected x- extension format
-                badgeArray.Add(new OpenApiObject
+                var badgeArray = new OpenApiArray();
+                foreach (var badge in badges)
                 {
-                    ["name"] = new OpenApiString(badge.Name),
-                    ["position"] = new OpenApiString(badge.Position.ToString().ToLowerInvariant()),
-                    ["color"] = new OpenApiString(badge.Color)
-                });
-            }
-            operation.Extensions["x-badges"] = badgeArray;
+                    // Injecting Scalar's expected x- extension format
+                    badgeArray.Add(new OpenApiObject
+                    {
+                        ["name"] = new OpenApiString(badge.Name),
+                        ["position"] = new OpenApiString(badge.Position.ToString().ToLowerInvariant()),
+                        ["color"] = new OpenApiString(badge.Color)
+                    });
+                }
+                operation.Extensions["x-badges"] = badgeArray;
 #elif NET10_0
                 var badgeArray = new JsonArray();
                 foreach (var badge in badges)
@@ -49,10 +49,7 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
                         ["color"] = JsonValue.Create(badge.Color)
                     });
                 }
-                if (operation.Extensions == null)
-                {
-                    operation.Extensions = new Dictionary<string, IOpenApiExtension>();
-                }
+                operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
                 operation.Extensions["x-badges"] = new JsonNodeExtension(badgeArray);
 #endif
             }

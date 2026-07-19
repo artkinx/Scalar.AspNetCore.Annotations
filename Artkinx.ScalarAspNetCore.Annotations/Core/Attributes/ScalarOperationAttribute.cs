@@ -37,15 +37,22 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Attributes
         /// </summary>
         public string? ThemeColor { get; set; }
 
+        /// <summary>
+        /// A custom operation display name
+        /// </summary>
+        /// <returns></returns>
+        public string? DisplayName { get; set; }
+
         public ScalarOperationAttribute() { }
 
-        public ScalarOperationAttribute(string summary, string? description = null, string? operationId = null, string[]? tags = null, string? themeColor = null)
+        public ScalarOperationAttribute(string summary, string? description = null, string? operationId = null, string[]? tags = null, string? themeColor = null, string? displayName = null)
         {
             Summary = summary;
             Description = description;
             OperationId = operationId;
             Tags = tags;
             ThemeColor = themeColor;
+            DisplayName = displayName;
         }
     }
 }

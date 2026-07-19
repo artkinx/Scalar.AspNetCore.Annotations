@@ -52,12 +52,12 @@ public class ScalarOperationTransformer : IOpenApiOperationTransformer
         // 1. Handle ScalarOperationAttribute for general operation metadata
         new OperationProcessor().ProcessAsync(operation, context, cancellationToken);
 
-  // 1. Handle Badges
+        // 1. Handle Badges
         new BadgeProcessor().ProcessAsync(operation, context, cancellationToken);
 
 
         // 2. Handle Code Samples
-        new CodeSampleProcessor().ProcessAsync(operation, context, 
+        new CodeSampleProcessor().ProcessAsync(operation, context,
             cancellationToken);
 
         // 3. Handle Exclusions
@@ -76,7 +76,7 @@ public class ScalarOperationTransformer : IOpenApiOperationTransformer
 
 
 
-
+#if NET8_0_OR_GREATER
 public static class Converters
 {
     public static object? CreateInstance(Type type)
@@ -110,3 +110,4 @@ public static class Converters
         return stringWriter.ToString();
     }
 }
+#endif

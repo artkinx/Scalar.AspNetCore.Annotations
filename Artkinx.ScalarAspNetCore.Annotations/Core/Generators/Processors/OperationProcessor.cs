@@ -24,8 +24,6 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
         {
             var scalarOp = context.Description.ActionDescriptor.EndpointMetadata.OfType<ScalarOperationAttribute>().FirstOrDefault();
 
-
-
             if (scalarOp != null)
             {
                 if (!string.IsNullOrEmpty(scalarOp.Summary))
@@ -42,7 +40,7 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
 #if NET10_0
                     operation.Tags = scalarOp.Tags.Select(selector: t => new OpenApiTagReference(referenceId: t)).ToHashSet();
 #elif NET9_0
-                operation.Tags = [.. scalarOp.Tags.Select(selector: t => new OpenApiTag() { Name = t })];
+                    operation.Tags = [.. scalarOp.Tags.Select(selector: t => new OpenApiTag() { Name = t })];
 #endif
                 }
 
@@ -50,15 +48,23 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
                 {
                     // In Scalar, color isn't a native property, so we use their recognized x-extension or tag it
 #if NET9_0
-                operation.Extensions["x-scalar-color"] = new OpenApiString(scalarOp.ThemeColor);
+                    operation.Extensions["x-scalar-color"] = new OpenApiString(scalarOp.ThemeColor);
 
 #elif NET10_0
-                    if (operation.Extensions == null)
-                    {
-                        operation.Extensions = new Dictionary<string, IOpenApiExtension>();
-                    }
+                    operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
                     operation.Extensions?["x-scalar-color"] = new JsonNodeExtension(JsonValue.Create(scalarOp.ThemeColor));
 #endif
+                }
+
+                if (!string.IsNullOrEmpty(scalarOp.DisplayName))
+                {
+#if NET9_0
+                    operation.Extensions["x-displayName"] = new OpenApiString(scalarOp.DisplayName);
+#elif NET10_0
+                    operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+                    operation.Extensions?["x-displayName"] = new JsonNodeExtension(JsonValue.Create(scalarOp.DisplayName));
+#endif
+
                 }
             }
             return Task.CompletedTask;
@@ -76,7 +82,10 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
 
             if (scalarOp == null)
                 return Task.CompletedTask;
-            Console.WriteLine($"Processing ScalarOperationAttribute for method: {context.MethodInfo.Name}");
+
+#if NET10_0
+            operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+#endif
 
             if (!string.IsNullOrEmpty(scalarOp.Description))
                 operation.Description = scalarOp.Description;
@@ -92,7 +101,7 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
 #if NET10_0
                 operation.Tags = scalarOp.Tags.Select(selector: t => new OpenApiTagReference(referenceId: t)).ToHashSet();
 #elif NET9_0
-                    operation.Tags = [.. scalarOp.Tags.Select(selector: t => new OpenApiTag() { Name = t })];
+                operation.Tags = [.. scalarOp.Tags.Select(selector: t => new OpenApiTag() { Name = t })];
 #endif
             }
 
@@ -100,19 +109,25 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Generators.Processors
             {
                 // In Scalar, color isn't a native property, so we use their recognized x-extension or tag it
 #if NET9_0
-                    operation.Extensions["x-scalar-color"] = new OpenApiString(scalarOp.ThemeColor);
+                operation.Extensions["x-scalar-color"] = new OpenApiString(scalarOp.ThemeColor);
 
 #elif NET10_0
-                if (operation.Extensions == null)
-                {
-                    operation.Extensions = new Dictionary<string, IOpenApiExtension>();
-                }
+
+                operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+
                 operation.Extensions?["x-scalar-color"] = new JsonNodeExtension(JsonValue.Create(scalarOp.ThemeColor));
 #endif
             }
 
-            Console.WriteLine($"Description: {operation.Description}, Summary: {operation.Summary}, OperationId: {operation.OperationId}");
-
+            if (!string.IsNullOrEmpty(scalarOp.DisplayName))
+            {
+#if NET9_0
+                operation.Extensions["x-displayName"] = new OpenApiString(scalarOp.DisplayName);
+#elif NET10_0
+                operation.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+                operation.Extensions?["x-displayName"] = new JsonNodeExtension(JsonValue.Create(scalarOp.DisplayName));
+#endif
+            }
             return Task.CompletedTask;
         }
 

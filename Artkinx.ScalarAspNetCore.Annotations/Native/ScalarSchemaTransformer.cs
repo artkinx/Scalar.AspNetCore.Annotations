@@ -33,6 +33,8 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Native
         {
             new SchemaProcessor().ProcessAsync(schema, context, cancellationToken);
 
+            new EnumProcessor().ProcessAsync(schema, context, cancellationToken);
+
             return Task.CompletedTask;
         }
     }

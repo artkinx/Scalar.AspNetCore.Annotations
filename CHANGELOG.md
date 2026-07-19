@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-preview.17] - 2026-07-18
+### Added
+- Added `ScalarEnumAttribute` to enable enum decoration and transformation
+- Updated `Scalar.Annotation.Test.Api` to carry the example for enum decorations
+
+## [1.0.0-preview.16] - 2026-07-15
+
+### Added
+- Added `ScalarOrderAttribute` attribute to allow ordering of properties in the Scalar UI.
+- Added a new test project `Scalar.Annotation.Test.Api` to demonstrate and test the new attribute.
+- Updated the `ScalarExcludeAttribute` to also exclude enums from the Scalar UI.
+
+### Changed
+- Improved the `ScalarStabilityAttribute` to also exclude enums from the Scalar UI.
+- Improved the `ScalarBadgeAttribute` to also exclude enums from the Scalar UI.
+- Improved the `ScalarCodeSampleAttribute` to also exclude enums from the Scalar UI.
+
 ## [1.0.0-preview.15] - 2026-07-08
 - Improved the implementation modularity
 - Improved the Schema generation for the `ScalarResponseAttribute`

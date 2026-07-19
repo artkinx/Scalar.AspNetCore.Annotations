@@ -90,6 +90,20 @@ Provide a value that adds a badge for the endpoint (accepted values: Experimenta
 ### `[ScalarOrder]`
 Enable custom ordering of schema properties in the Scalar UI by specifying a numeric order value.
 
+### `[ScalarEnum]`
+Enrich an enum with Scalar-specific metadata.
+
+```csharp
+[ScalarEnum("MyEnum")]
+public enum MyEnum
+{
+    [ScalarEnum("First", "First value")]
+    First,
+    [ScalarEnum("Second", "Second value")]
+    Second
+}
+```
+
 ## Enums
 
 ### 'ScalarStabilityLevel'

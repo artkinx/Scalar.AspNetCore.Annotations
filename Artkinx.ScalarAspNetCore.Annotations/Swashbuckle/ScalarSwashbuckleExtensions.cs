@@ -16,7 +16,7 @@ public static class ScalarSwashbuckleExtensions
 
         options.OperationFilter<ScalarSwashbuckleOperationFilter>();
         options.SchemaFilter<ScalarSwashbuckleSchemaFilter>();
-
+        options.DocumentFilter<ScalarSwaggerDocumentFilter>();
         return options;
     }
 }
