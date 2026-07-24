@@ -49,6 +49,19 @@ Here are the attributes provided by this package to enrich your endpoints:
 ### `[ScalarOperation]`
 Enhance an operation with Scalar-specific metadata.
 
+```csharp
+[HttpGet]
+[ScalarOperation(
+    Summary = "Get it now",
+    Description = "For getting it now",
+    OperationId = "Getit",
+    Tags = ["Gerit"],
+    ThemeColor = "#ffff",
+    DisplayName = "Getit"
+    )]
+public IActionResult GetIt() { ... }
+```
+
 ### `[ScalarResponse]`
 Annotate your API endpoint with specific response information.
 You can now use the comprehensive `ScalarContentType` enum to easily specify MIME types.

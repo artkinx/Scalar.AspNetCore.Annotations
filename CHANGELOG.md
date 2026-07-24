@@ -2,9 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.0-preview.17] - 2026-07-18
+## [1.0.0-preview.17] - 2026-07-20
 ### Added
 - Added `ScalarEnumAttribute` to enable enum decoration and transformation
+- Added `DisplayName` to `ScalarOperationAttribute` to enable the definition for Scalar's `x-displayName` tag
 - Updated `Scalar.Annotation.Test.Api` to carry the example for enum decorations
 
 ## [1.0.0-preview.16] - 2026-07-15

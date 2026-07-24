@@ -43,9 +43,27 @@ namespace Artkinx.ScalarAspNetCore.Annotations.Core.Attributes
         /// <returns></returns>
         public string? DisplayName { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ScalarOperationAttribute"/> class.
+        /// </summary>
         public ScalarOperationAttribute() { }
 
-        public ScalarOperationAttribute(string summary, string? description = null, string? operationId = null, string[]? tags = null, string? themeColor = null, string? displayName = null)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ScalarOperationAttribute"/> class.
+        /// </summary>
+        /// <param name="summary">A short summary of what the operation does.</param>
+        /// <param name="description">A verbose explanation of the operation behavior.</param>
+        /// <param name="operationId">The unique string used to identify the operation.</param>
+        /// <param name="tags">Overrides the default tags for grouping in the Scalar UI.</param>
+        /// <param name="themeColor">A custom hex color or theme string applied to this specific endpoint in the Scalar UI.</param>
+        /// <param name="displayName">A custom operation display name that overrides tag name if the <see cref="Tags"/> is set.</param>
+        public ScalarOperationAttribute(
+            string summary,
+            string? description = null,
+            string? operationId = null,
+            string[]? tags = null,
+            string? themeColor = null,
+            string? displayName = null)
         {
             Summary = summary;
             Description = description;
